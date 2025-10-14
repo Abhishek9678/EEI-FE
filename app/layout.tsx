@@ -29,10 +29,7 @@ export default function RootLayout({
           <MultiHeader />
           {/* Main content with astro background */}
           <div
-            className="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed relative"
-            style={{
-              backgroundImage: "url('/astro.png')"
-            }}
+          
           >
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
