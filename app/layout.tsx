@@ -11,9 +11,9 @@ import { Loading } from "@/components/loading"
 import { ConditionalTagline } from "@/components/conditional-tagline"
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "EEI Serives",
+  description: "End-to-end electric mobility for last-mile logistics.",
+  generator: "EEI Services",
 }
 
 export default function RootLayout({
