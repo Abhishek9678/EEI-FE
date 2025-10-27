@@ -10,13 +10,15 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    serverComponentsExternalPackages: ['lightningcss'],
+    // Moved serverComponentsExternalPackages to the root level
   },
+  // Moved to root level as per Next.js 15
+  serverExternalPackages: ['lightningcss'],
   webpack: (config, { isServer }) => {
     // Fixes npm packages that depend on `lightningcss` module
     if (!isServer) {
       config.resolve.fallback = {
-        ...config.resolve.fallback,
+        ...(config.resolve.fallback || {}),
         fs: false,
       };
     }
