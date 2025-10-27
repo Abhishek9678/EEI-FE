@@ -85,7 +85,7 @@ export default function Page() {
       {/* Services preview */}
       <section className="px-4 lg:px-8 py-12 bg-white/90 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-          <div>
+          <div className="w-full">
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">Services</h2>
             <div className="mt-6 grid gap-4">
               <div className="rounded-lg border bg-blue-900 p-5 text-white">
@@ -104,9 +104,6 @@ export default function Page() {
             <a href="/services" className="inline-block mt-6 text-sm font-medium text-green-700 hover:text-green-800">
               Explore services →
             </a>
-          </div>
-          <div className="rounded-lg border p-6 flex items-center justify-center bg-gray-50">
-            <Image src="/robo1.png" alt="Services graphic" width={420} height={280} className="h-auto w-full max-w-sm" />
           </div>
         </div>
       </section>

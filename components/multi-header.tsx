@@ -24,15 +24,9 @@ export function MultiHeader() {
   }, [])
 
   return (
-    <header className={cn(
-      "w-full border-b fixed top-0 z-[200] transition-all duration-300",
-      isScrolled ? "bg-white text-gray-900" : "bg-transparent text-white"
-    )}>
+    <header className="w-full border-b fixed top-0 z-[200] bg-white text-gray-900 transition-all duration-300">
       {/* Deck 2: Main nav */}
-      <div className={cn(
-        "py-1 flex items-center justify-between transition-all duration-300",
-        isScrolled ? "bg-white" : "bg-hero-coke"
-      )}>
+      <div className="py-1 flex items-center justify-between transition-all duration-300 bg-white">
         <Link href="/" className="flex items-center gap-2 pl-4 sm:pl-6 md:pl-12" aria-label="Go to homepage">
           
         <Image
@@ -52,8 +46,7 @@ export function MultiHeader() {
               <Link
                 href={item.href}
                 className={cn(
-                  "text-sm transition-all duration-300 relative z-10 px-4 py-2 rounded-md",
-                  isScrolled ? "text-gray-900 hover:text-gray-700" : "text-white hover:text-white",
+                  "text-sm transition-all duration-300 relative z-10 px-4 py-2 rounded-md text-gray-900 hover:text-gray-700",
                   item.children?.length && "inline-flex items-center gap-1",
                 )}
               >
@@ -91,26 +84,17 @@ export function MultiHeader() {
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center px-4 gap-4">
-          <Button asChild variant="outline" className={cn(
-            "transition-all duration-300",
-            isScrolled ? "border-gray-300 text-gray-900 bg-transparent hover:bg-gray-100" : "border-white text-white bg-transparent hover:bg-white/10"
-          )}>
+          <Button asChild variant="outline" className="transition-all duration-300 border-gray-300 text-gray-900 bg-transparent hover:bg-gray-100">
             <Link href={ctas.secondary.href}>{ctas.secondary.label}</Link>
           </Button>
-          <Button asChild className={cn(
-            "transition-all duration-300",
-            isScrolled ? "bg-gray-900 hover:bg-black text-white" : "bg-black hover:bg-gray-800 text-white"
-          )}>
+          <Button asChild className="transition-all duration-300 bg-gray-900 hover:bg-black text-white">
             <Link href={ctas.primary.href}>{ctas.primary.label}</Link>
           </Button>
         </div>
 
         {/* Mobile hamburger */}
         <button
-          className={cn(
-            "md:hidden inline-flex items-center justify-center h-10 w-10 rounded border transition-all duration-300 mr-4",
-            isScrolled ? "border-gray-300 text-gray-900" : "border-white text-white"
-          )}
+          className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded border border-gray-300 text-gray-900 transition-all duration-300 mr-4"
           aria-label="Toggle menu"
           onClick={() => setMobileOpen((v) => !v)}
         >
