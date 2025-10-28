@@ -172,7 +172,7 @@ export default function FranchisePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="tel:+919876543210" 
+                href="tel:+919211780652" 
                 className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Call Us Now
