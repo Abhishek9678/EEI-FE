@@ -30,11 +30,7 @@ export default function InvestorsPage() {
           sustainable logistics.
         </p>
 
-        <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {["Gogoro", "Goodyear Ventures", "9Unicorns", "IAN", "LetsVenture", "Grip", "WFC", "Ivygrowth"].map((name) => (
-            <div key={name} className="rounded-lg border p-5 bg-white/90 backdrop-blur-sm text-sm text-gray-700">{name}</div>
-          ))}
-        </div>
+       
 
         <div className="mt-10 rounded-lg border p-6 bg-white/90 backdrop-blur-sm">
           <h2 className="text-lg font-semibold text-gray-900">Growth plans</h2>
