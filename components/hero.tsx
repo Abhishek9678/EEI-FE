@@ -73,9 +73,9 @@ export function Hero() {
   }, [emblaApi, isPlaying])
 
   return (
-    <section className="relative px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-20 text-white overflow-hidden min-h-screen bg-hero-coke">
+    <section className="relative px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-20 text-gray-900 overflow-hidden min-h-screen bg-gradient-to-br from-blue-50 to-blue-200">
       {/* Carousel container with reduced width and rounded border */}
-      <div className="max-w-6xl mx-auto relative rounded-2xl sm:rounded-3xl border-2 border-emerald-500/20 overflow-hidden bg-black" ref={emblaRef}>
+      <div className="max-w-6xl mx-auto relative rounded-2xl sm:rounded-3xl border-2 border-blue-200 overflow-hidden bg-white shadow-xl" ref={emblaRef}>
         <div className="flex h-full">
           {heroImages.map((image, index) => (
             <div key={index} className="flex-[0_0_100%] relative h-[70vh] sm:h-[75vh] md:h-[80vh]">
@@ -88,23 +88,23 @@ export function Hero() {
                 className="object-cover object-center"
                 quality={95}
               />
-              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-blue-900/30" />
               
               {/* Content overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-16 text-center">
                   <div className="max-w-4xl mx-auto">
-                    <h1 className="text-pretty text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight animate-in slide-in-from-bottom-4 duration-700">
+                    <h1 className="text-pretty text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight text-white drop-shadow-lg animate-in slide-in-from-bottom-4 duration-700">
                       {image.title}
                     </h1>
-                    <p className="mt-4 sm:mt-6 lg:mt-8 text-white/90 leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-3xl mx-auto animate-in slide-in-from-bottom-4 duration-700 delay-200">
+                    <p className="mt-4 sm:mt-6 lg:mt-8 text-blue-100 leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-3xl mx-auto drop-shadow-md animate-in slide-in-from-bottom-4 duration-700 delay-200">
                       {image.subtitle}
                     </p>
                     <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-in slide-in-from-bottom-4 duration-700 delay-300">
-                      <Button asChild className="bg-black hover:scale-110 text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 w-full sm:w-auto">
+                      <Button asChild className="bg-blue-700 hover:bg-blue-800 text-white hover:scale-110 text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 w-full sm:w-auto shadow-md hover:shadow-lg transition-all">
                         <Link href="/contact">Book a Demo</Link>
                       </Button>
-                      <Button asChild variant="outline" className="border-white text-white bg-transparent hover:bg-white/10 text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 w-full sm:w-auto">
+                      <Button asChild variant="outline" className="border-white/70 text-white bg-white/20 hover:bg-white/30 hover:border-white/90 text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 w-full sm:w-auto backdrop-blur-sm hover:backdrop-blur transition-all">
                         <Link href="/services">Explore Services</Link>
                       </Button>
                     </div>
@@ -125,7 +125,7 @@ export function Hero() {
               variant="outline"
               size="icon"
               onClick={scrollPrev}
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 bg-black/20 backdrop-blur-sm h-8 w-8 sm:h-10 sm:w-10"
+              className="border-white/50 text-white hover:bg-white/20 hover:border-white/80 bg-black/20 backdrop-blur-sm h-10 w-10 sm:h-12 sm:w-12 transition-all"
             >
               <ChevronLeft className="h-3 w-3 sm:h-5 sm:w-5" />
             </Button>
@@ -134,7 +134,7 @@ export function Hero() {
               variant="outline"
               size="icon"
               onClick={togglePlayPause}
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 bg-black/20 backdrop-blur-sm h-8 w-8 sm:h-10 sm:w-10"
+              className="border-white/50 text-white hover:bg-white/20 hover:border-white/80 bg-black/20 backdrop-blur-sm h-10 w-10 sm:h-12 sm:w-12 transition-all"
             >
               {isPlaying ? <Pause className="h-3 w-3 sm:h-5 sm:w-5" /> : <Play className="h-3 w-3 sm:h-5 sm:w-5" />}
             </Button>
@@ -143,7 +143,7 @@ export function Hero() {
               variant="outline"
               size="icon"
               onClick={scrollNext}
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 bg-black/20 backdrop-blur-sm h-8 w-8 sm:h-10 sm:w-10"
+              className="border-white/50 text-white hover:bg-white/20 hover:border-white/80 bg-black/20 backdrop-blur-sm h-10 w-10 sm:h-12 sm:w-12 transition-all"
             >
               <ChevronRight className="h-3 w-3 sm:h-5 sm:w-5" />
             </Button>
@@ -158,10 +158,10 @@ export function Hero() {
             <button
               key={index}
               onClick={() => scrollTo(index)}
-              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 border-2 border-white/30 ${
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 border-2 ${
                 index === selectedIndex
                   ? "bg-white scale-125 border-white"
-                  : "bg-white/40 hover:bg-white/60 hover:scale-110"
+                  : "bg-white/50 hover:bg-white/70 hover:scale-110 border-white/50"
               }`}
             />
           ))}

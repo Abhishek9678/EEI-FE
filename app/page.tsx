@@ -1,26 +1,46 @@
+'use client';
+
 import { Hero } from "@/components/hero"
 import GreenOMeter from "@/components/green-o-meter"
 import Image from "next/image"
 import AutoCarousel from "@/components/auto-carousel"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel"
+import { ScrollAnimations, HeroAnimations } from "@/components/animations"
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Page() {
+  // Initialize GSAP animations
+  useEffect(() => {
+    // Initialize animations for elements with data-animate attribute
+    gsap.utils.toArray<HTMLElement>('[data-animate]').forEach((element) => {
+      gsap.from(element, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
+  }, []);
+
   return (
-    <main>
+    <main className="overflow-x-hidden">
+      <HeroAnimations />
+      <ScrollAnimations>
 
       <Hero />
 
-      <div className="mt-6 mb-10">
+      <div className="mt-6 mb-10" data-animate>
         <GreenOMeter />
       </div>
 
-      <section className="px-4 lg:px-8 py-12 ">
+      <section className="px-4 lg:px-8 py-12" data-animate data-delay="0.2">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-pretty text-2xl md:text-3xl font-semibold text-white">Why choose our EV platform</h2>
           <div className="mt-6 grid md:grid-cols-3 gap-6">
@@ -42,7 +62,7 @@ export default function Page() {
      
 
       {/* Logistics & Fleet carousel */}
-      <section className="px-4 lg:px-8 py-10 bg-white/90 backdrop-blur-sm">
+      <section className="px-4 lg:px-8 py-10 bg-white/90 backdrop-blur-sm" data-animate data-delay="0.3">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">Our Logistics & Fleet</h2>
           <p className="mt-2 text-gray-700">A glimpse of operations, vehicles, and rider-first execution.</p>
@@ -107,7 +127,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section className="px-4 lg:px-8 py-12 bg-black">
+      <section className="px-4 lg:px-8 py-12 bg-black" data-animate data-delay="0.6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-semibold text-white">How it works</h2>
           <p className="mt-2 text-white/80">Watch our platform in action.</p>
@@ -129,7 +149,7 @@ export default function Page() {
       </section>
 
       {/* Investors preview */}
-      <section className="px-4 lg:px-8 py-12 bg-blue-950">
+      <section className="px-4 lg:px-8 py-12 bg-blue-950" data-animate data-delay="0.7">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-semibold text-white">Investors</h2>
           <p className="mt-3 text-white/80 max-w-3xl">
@@ -172,6 +192,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      </ScrollAnimations>
     </main>
   )
 }
