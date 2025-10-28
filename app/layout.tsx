@@ -11,7 +11,7 @@ import { Loading } from "@/components/loading"
 import { ConditionalTagline } from "@/components/conditional-tagline"
 
 export const metadata: Metadata = {
-  title: "EEI Serives",
+  title: "EEI Services",
   description: "End-to-end electric mobility for last-mile logistics.",
   generator: "EEI Services",
 }
