@@ -178,7 +178,7 @@ export default function FranchisePage() {
                 Call Us Now
               </a>
               <a 
-                href="mailto:franchise@evcompany.com" 
+                href="mailto:Sakshi@eeiservices.in" 
                 className="px-6 py-3 border-2 border-gray-300 font-medium rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Email Us
