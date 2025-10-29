@@ -1,140 +1,244 @@
-"use client";
+'use client';
 
-import React from "react";
-import Slider from "react-slick";
-import {
-  Box,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-  IconButton,
-} from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { Box, Container, Typography, IconButton, useTheme } from '@mui/material';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 
-const services = [
-  {
-    title: "Flexible EV Leasing",
-    image: "/images/flexible-ev-leasing.jpg",
-  },
-  {
-    title: "LIUM GO Dispatch & Delivery",
-    image: "/images/lium-go-dispatch.jpg",
-  },
-  {
-    title: "EV Manpower",
-    image: "/images/ev-manpower.jpg",
-  },
-  {
-    title: "Infrastructure Sharing",
-    image: "/images/infrastructure-sharing.jpg",
-  },
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+
+const SERVICES = [
+  { title: 'Flexible EV Leasing', img: '/ev-lease.png', alt: 'Flexible EV Leasing' },
+  { title: 'LIUM GO Dispatch & Delivery', img: '/liumgo-dispatch.png', alt: 'LIUM GO Dispatch & Delivery' },
+  { title: 'EV Manpower', img: '/ev-lease.png', alt: 'EV Manpower' },
+  { title: 'Infrastructure Sharing', img: '/liumgo-dispatch.png', alt: 'Infrastructure Sharing' },
+  { title: 'Flexible EV Leasing', img: '/ev-lease.png', alt: 'Flexible EV Leasing' },
+  { title: 'LIUM GO Dispatch & Delivery', img: '/liumgo-dispatch.png', alt: 'LIUM GO Dispatch & Delivery' },
+  { title: 'EV Manpower', img: '/ev-lease.png', alt: 'EV Manpower' },
+  { title: 'Infrastructure Sharing', img: '/liumgo-dispatch.png', alt: 'Infrastructure Sharing' },
 ];
 
 export default function CoreServicesSlider() {
-  const sliderRef = React.useRef(null);
+  const theme = useTheme();
+  const sliderRef = useRef(null);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
-  };
+  // --- NEW: state for disabling arrows
+ const [current, setCurrent] = useState(0);
+const [slideCount, setSlideCount] = useState(SERVICES.length);
+const [visible, setVisible] = useState(4); /// effective slidesToShow
 
+const readMetaFromRef = useCallback(() => {
+  const inner = sliderRef.current?.innerSlider;
+  // fallbacks so arrows stay safe even before slick mounts
+  const sc = SERVICES.length;
+  const st = inner?.state?.slidesToShow ?? 4;
+  setSlideCount(sc);
+  setVisible(st);
+}, []);
+
+useEffect(() => {
+  // if your data array changes in the future
+  setSlideCount(SERVICES.length);
+}, [SERVICES.length]);
+
+  const lime = '#C8F169';
+
+ const settings = {
+  arrows: false,
+  dots: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    { breakpoint: 1400, settings: { slidesToShow: 3 } },
+    { breakpoint: 1100, settings: { slidesToShow: 3 } },
+    { breakpoint: 900,  settings: { slidesToShow: 2 } },
+    { breakpoint: 600,  settings: { slidesToShow: 1 } },
+  ],
+  onInit: () => { readMetaFromRef(); setCurrent(0); },
+  onReInit: () => { readMetaFromRef(); },
+  afterChange: (index) => { setCurrent(index); readMetaFromRef(); },
+};
+
+// --- disabled logic (always render buttons; just disable) ---
+const noData = slideCount === 0;
+const lastStartIndex = Math.max(0, slideCount - visible);
+const prevDisabled = noData || current <= 0;
+const nextDisabled = noData || current >= lastStartIndex;
+
+  return (
+    <Box component="section" sx={{ py: { xs: 6, md: 8 } }}>
+      <Container maxWidth="lg">
+        <Typography
+          component="h2"
+          align="center"
+          sx={{
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
+            color: '#000',
+            fontSize: { xs: '1.9rem', sm: '2.4rem', md: '2.9rem' },
+            mb: { xs: 3, sm: 4, md: 6 },
+          }}
+        >
+          Core Services
+        </Typography>
+
+        <Box
+          sx={{
+            '.slick-list': { mx: { xs: -1, sm: -1.5, md: -2 } },
+            '.slick-slide > div': { px: { xs: 1, sm: 1.5, md: 2 } },
+            '.slick-track': { display: 'flex', alignItems: 'stretch' },
+            '.slick-slide': { height: 'auto' },
+            '.slick-slide > div': { height: '100%', display: 'flex' },
+          }}
+        >
+          <Slider ref={sliderRef} {...settings}>
+            {SERVICES.map((s, idx) => (
+              <Box key={idx} sx={{ height: '100%', width: '100%' }}>
+                <ServiceCard service={s} lime={lime} />
+              </Box>
+            ))}
+          </Slider>
+        </Box>
+
+        {/* Arrows with disabled state */}
+     <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', mt: { xs: 3, sm: 4 } }}>
+  <SquareArrow
+    ariaLabel="Previous"
+    onClick={() => sliderRef.current?.slickPrev()}
+    lime={lime}
+    disabled={prevDisabled}
+  >
+    <ArrowBackRoundedIcon />
+  </SquareArrow>
+
+  <SquareArrow
+    ariaLabel="Next"
+    onClick={() => sliderRef.current?.slickNext()}
+    lime={lime}
+    disabled={nextDisabled}
+  >
+    <ArrowForwardRoundedIcon />
+  </SquareArrow>
+</Box>
+
+      </Container>
+
+      <IconButton
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        size="small"
+        sx={{
+          position: 'fixed',
+          right: { xs: 14, md: 22 },
+          bottom: { xs: 18, md: 24 },
+          bgcolor: lime,
+          color: '#111',
+          borderRadius: 2,
+          boxShadow: '0 6px 20px rgba(0,0,0,0.18)',
+          '&:hover': { bgcolor: '#d6fa89' },
+        }}
+      >
+        <KeyboardArrowUpRoundedIcon />
+      </IconButton>
+    </Box>
+  );
+}
+
+function ServiceCard({ service, lime }) {
   return (
     <Box
       sx={{
-        textAlign: "center",
-        py: { xs: 6, md: 8 },
-        backgroundColor: "#fff",
+        borderRadius: 4,
+        overflow: 'hidden',
+        bgcolor: '#fff',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
       }}
     >
-      <Typography
-        variant="h4"
-        sx={{
-          fontWeight: 700,
-          mb: 4,
-          color: "#000",
-          fontSize: { xs: "1.8rem", md: "2.5rem" },
-        }}
-      >
-        Core Services
-      </Typography>
-
-      <Box position="relative" maxWidth="1200px" mx="auto">
-        <Slider ref={sliderRef} {...settings}>
-          {services.map((service, i) => (
-            <Card
-              key={i}
-              sx={{
-                borderRadius: 2,
-                boxShadow: "0px 2px 8px rgba(0,0,0,0.08)",
-                overflow: "hidden",
-                backgroundColor: "#F7FAF9",
-                textAlign: "left",
-              }}
-            >
-              <CardMedia
-                component="img"
-                height="240"
-                image={service.image}
-                alt={service.title}
-                sx={{ objectFit: "cover" }}
-              />
-              <CardContent>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    color: "#000",
-                    fontSize: { xs: "1.1rem", md: "1.3rem" },
-                  }}
-                >
-                  {service.title}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </Slider>
-
-        {/* Custom Arrows */}
+      <Box sx={{ position: 'relative', pt: '66.66%' }}>
+        <Image
+          src={service.img}
+          alt={service.alt || service.title}
+          fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 33vw, 25vw"
+          style={{ objectFit: 'cover' }}
+        />
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 2,
-            mt: 4,
+            position: 'absolute',
+            right: 8,
+            bottom: 8,
+            width: 10,
+            height: 10,
+            borderRadius: 1,
+            bgcolor: lime,
+            opacity: 0.95,
+          }}
+        />
+      </Box>
+
+      <Box sx={{ p: { xs: 2, sm: 2.5, md: 3 }, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <Typography
+          component="h3"
+          sx={{
+            fontWeight: 800,
+            color: '#111',
+            letterSpacing: '-0.01em',
+            lineHeight: 1.1,
+            fontSize: { xs: '1.25rem', sm: '1.35rem', md: '1.5rem' },
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            minHeight: { xs: 48, sm: 52, md: 60 },
           }}
         >
-          <IconButton
-            onClick={() => sliderRef.current.slickPrev()}
-            sx={{
-              backgroundColor: "#E6F0E8",
-              color: "#000",
-              "&:hover": { backgroundColor: "#DDECE0" },
-            }}
-          >
-            <ArrowBackIosNewIcon />
-          </IconButton>
-          <IconButton
-            onClick={() => sliderRef.current.slickNext()}
-            sx={{
-              backgroundColor: "#E6F0E8",
-              color: "#000",
-              "&:hover": { backgroundColor: "#DDECE0" },
-            }}
-          >
-            <ArrowForwardIosIcon />
-          </IconButton>
-        </Box>
+          {service.title}
+        </Typography>
+        <Box sx={{ flexGrow: 1 }} />
       </Box>
     </Box>
   );
 }
+
+// === SquareArrow (prevents clicks when disabled) ===
+function SquareArrow({ children, onClick, ariaLabel, lime, disabled }) {
+  const safeClick = (e) => {
+    if (disabled) return; // do nothing when disabled
+    onClick?.(e);
+  };
+
+  return (
+    <IconButton
+      aria-label={ariaLabel}
+      aria-disabled={disabled}
+      onClick={safeClick}
+      disableRipple={disabled}
+      sx={{
+        width: 56,
+        height: 56,
+        borderRadius: 2,
+        bgcolor: disabled ? '#F0F2E5' : lime,
+        color: '#1b1b1b',
+        opacity: disabled ? 0.6 : 1, // <— instead of opacity: 0.38 or hiding
+        boxShadow: disabled ? 'none' : '0 8px 24px rgba(0,0,0,0.12)',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        '&:hover': {
+          bgcolor: disabled ? '#F0F2E5' : '#d6fa89',
+        },
+        '& svg': { fontSize: 24 },
+        transition: 'background-color .2s, box-shadow .2s, opacity .2s',
+      }}
+    >
+      {children}
+    </IconButton>
+  );
+}
+
+
