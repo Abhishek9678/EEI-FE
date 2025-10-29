@@ -5,7 +5,7 @@ import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
 import KeyboardArrowUpRounded from "@mui/icons-material/KeyboardArrowUpRounded";
 
 const TOKENS = {
-  lime: "#C9F269",
+  lime: "#CAE28E",
   limeHover: "#B8E454",
   border: "rgba(255,255,255,0.14)",
 };
@@ -70,8 +70,9 @@ export default function Hero() {
             top: { xs: 120, md: 160 },
             display: { xs: "none", lg: "grid" },
             gap: 3,
-            width: 300,
-            px: 3,
+            width: 350,
+            pr: 3,
+            mt:3
           }}
         >
           {[
@@ -86,12 +87,12 @@ export default function Hero() {
               alignItems="flex-start"
               sx={{
                 borderTop: "1px solid " + TOKENS.border,
-                pt: 3,
+                pt: 3,px:3,
                 ...(bottom ? { borderBottom: "1px solid " + TOKENS.border, pb: 3 } : {}),
               }}
             >
               {/* use next/image only if these images are large; for small UI icons, <img> is fine */}
-              <img src={icon} alt="" width={40} height={40} />
+              <img src={icon} alt="" width={70} height={70} />
               <Box>
                 {lines.map((t, idx) => (
                   <Typography
@@ -107,15 +108,18 @@ export default function Hero() {
         </Box>
 
         {/* Center content */}
-        <Box sx={{ mx: "auto", textAlign: "center", maxWidth: 980 }}>
-          <Typography variant="h2" component="h1" sx={{ mt: { xs: 4, md: 2 } }}>
+        <Box sx={{ mx: "auto", textAlign: "center", maxWidth: 980,pl:{ sm: 0, lg: 18 } }}>
+          <Typography variant="h1" component="h1" sx={{ mt: { xs: 4, md: 15 } }}>
             Drive The Future
           </Typography>
           <Typography variant="h1" sx={{ mt: 1 }}>
             Cleaner, Smarter, Electric
           </Typography>
           <Typography sx={{ mt: 2 }} color="text.secondary">
-            Eei Services powers scalable EV fleets, last-mile delivery and infrastructure sharing for Indian businesses.
+            Eei Services powers scalable EV fleets, last-mile delivery and
+          </Typography>
+          <Typography color="text.secondary">
+            infrastructure sharing for Indian businesses.
           </Typography>
 
           <Button
@@ -137,6 +141,17 @@ export default function Hero() {
             Get A Free Demo
           </Button>
         </Box>
+
+         <Typography
+              variant="body2"
+              sx={{position: "absolute",
+            // right: '26%',
+            // pr:{ sm: 0, lg: 18 },
+            width:'100%',
+            bottom: 24, opacity: 0.85, mt: { xs: 6, md: 9 }, textAlign:'center' }}
+            >
+              Trusted by logistics partners, delivery leaders and B2B brands across India.
+            </Typography>
 
         {/* Scroll to top */}
         <Box
