@@ -31,43 +31,7 @@ export default function Home() {
     <>
 
       <Box>
-        <Box sx={{px: { xs: 3, sm: 6, md: 12 }, py: 6 }}>
-          <Grid2 container spacing={2}>
-            <Grid2 size={4}>
-              <Box >
-                <Box sx={{
-                  height: '356px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  margin: 'auto'
-                }}>
-                  <Box>
-                     <Image
-            src={aboutData.hero.icon}
-            alt={aboutData.hero.label}
-            width={240}
-            height={120}
-            style={{ objectFit: 'contain' }}
-          />
-                    {/* <Typography variant='h3' fontWeight="bold" gutterBottom>{aboutData.hero.title}</Typography> */}
-                    <Typography variant='body1' sx={{mb:2 }}>{aboutData.hero.subtitle}</Typography>
-                    <Typography variant='h5'>{aboutData.hero.subtitle1}</Typography>
-                    <Typography variant='body1'>{aboutData.hero.subtitle2}</Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Grid2>
-            <Grid2 size={8} sx={{display:'flex',justifyContent:'flex-end'}}>
-              <Image
-                src={HRMS}
-                alt="Overlay Card"
-                width={isMobile ? 180 : 550}
-                height={isMobile ? 180 : 300}
-              />
-            </Grid2>
-          </Grid2>
-
-        </Box>
+     
 
         {/* <Box sx={{
         background: 'white',
