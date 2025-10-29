@@ -49,15 +49,13 @@ function QuoteBadge() {
         boxShadow: TOKENS.shadow,
       }}
     >
-      <Typography
-        sx={{
-          fontWeight: 900,
-          fontSize: 20,
-          color: TOKENS.limeText,
-        }}
-      >
-        ""
-      </Typography>
+          <Image
+               src="SVG.png"
+               alt=""
+               width={28}
+               height={28}
+               style={{ display: "block", objectFit: "contain" }}
+             />
     </Box>
   );
 }
