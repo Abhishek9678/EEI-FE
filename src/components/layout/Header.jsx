@@ -9,7 +9,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
 
-const COLORS = { border: "rgba(255,255,255,0.14)", lime: "#C9F269", limeHover: "#B8E454" };
+const COLORS = { border: "rgba(255,255,255,0.14)", lime: "#CAE28E", limeHover: "#B8E454" };
 
 function NavLink({ href, children }) {
   return (
@@ -46,7 +46,7 @@ export default function Header() {
     >
       <Toolbar
         sx={{
-          borderBottom: `1px solid ${COLORS.border}`, // subtle line for readability
+        //   borderBottom: `1px solid ${COLORS.border}`, // subtle line for readability
           backdropFilter: "blur(0px)",                // totally clear; set blur(6px) if you want frosted
         }}
       >
@@ -60,8 +60,8 @@ export default function Header() {
             <Image
               src="/EEI SERVICES LOGO 1.png"
               alt="EEI Services"
-              width={40}
-              height={40}
+              width={70}
+              height={70}
               priority
             />
           </Box>
@@ -87,7 +87,7 @@ export default function Header() {
                   "&:hover": { bgcolor: COLORS.limeHover },
                   color: "#0B0B0B",
                   fontWeight: 800,
-                  borderRadius: 1.5,
+                  borderRadius: 40,
                 }}
               >
                 Get A Free Demo
@@ -128,6 +128,7 @@ export default function Header() {
                     variant="contained"
                     endIcon={<ArrowOutwardRounded />}
                     sx={{
+                        borderRadius:'40px',
                       mt: 1,
                       bgcolor: COLORS.lime,
                       "&:hover": { bgcolor: COLORS.limeHover },
