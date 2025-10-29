@@ -72,8 +72,8 @@ function Row({ iconSrc, title, subtitle }) {
         <Image
           src={iconSrc}
           alt=""
-          width={28}
-          height={28}
+          width={48}
+          height={48}
           style={{ display: "block", objectFit: "contain" }}
         />
       </Box>
@@ -147,8 +147,8 @@ export default function InvestmentReturns() {
                   sx={{
                     width: 56,
                     height: 56,
-                    borderRadius: 2,
-                    bgcolor: TOKENS.limeTile,
+                    
+                   
                     display: "grid",
                     placeItems: "center",
                     flexShrink: 0,
@@ -156,10 +156,10 @@ export default function InvestmentReturns() {
                 >
                   {/* replace with your PNG */}
                   <Image
-                    src="/c0d95fad-98c6-4432-91fd-fb8e7e655cc7.png"
+                    src="/Background (11).png"
                     alt=""
-                    width={28}
-                    height={28}
+                    width={56}
+                    height={56}
                     style={{ display: "block", objectFit: "contain" }}
                   />
                 </Box>
@@ -189,17 +189,17 @@ export default function InvestmentReturns() {
             <Box sx={{ mt: 2.5 }}>
               <Stack spacing={2}>
                 <Row
-                  iconSrc="/Screenshot (21).png"
+                  iconSrc="/Background (11).png"
                   title="Assured Business Allocation"
                   subtitle="Pre-negotiated contracts with major brands guarantee revenue from day one"
                 />
                 <Row
-                  iconSrc="/Screenshot (21).png"
+                  iconSrc="/Background (12).png"
                   title="Flexible Breakeven Timeline"
                   subtitle="12–30 months depending on franchise model and market conditions"
                 />
                 <Row
-                  iconSrc="/Screenshot (21).png"
+                  iconSrc="/Background (13).png"
                   title="Scalable Growth Path"
                   subtitle="Upgrade from micro to city to regional as your operations mature"
                 />
@@ -229,7 +229,7 @@ export default function InvestmentReturns() {
                 top: 18,
                 right: 18,
                 left: { xs: 24, md: 40 },
-                bottom: 18,
+                bottom: 130,
                 bgcolor: TOKENS.lime,
                 borderRadius: 4,
                 transform: "skewX(-6deg)",
@@ -254,7 +254,7 @@ export default function InvestmentReturns() {
                 sx={{
                   width: 56,
                   height: 56,
-                  borderRadius: 2,
+                  
                   bgcolor: TOKENS.limeTile,
                   display: "grid",
                   placeItems: "center",
@@ -265,8 +265,8 @@ export default function InvestmentReturns() {
                 <Image
                   src="/Background (10).png"
                   alt=""
-                  width={28}
-                  height={28}
+                  width={56}
+                  height={56}
                   style={{ display: "block", objectFit: "contain" }}
                 />
               </Box>
