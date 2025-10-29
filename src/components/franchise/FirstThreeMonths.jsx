@@ -92,7 +92,7 @@ function MonthCard({ step, month, title, desc }) {
 
 export default function FirstThreeMonths() {
     return (
-        <Box component="section" sx={{ bgcolor: TOKENS.pageBg, py: { xs: 8, md: 10 } }}>
+        <Box component="section" sx={{ bgcolor: TOKENS.pageBg, py: { xs: 6, md: 6 } }}>
             <Container maxWidth="lg">
                 {/* Heading */}
                 <Typography

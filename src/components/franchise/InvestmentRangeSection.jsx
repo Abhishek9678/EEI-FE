@@ -57,7 +57,7 @@ export default function InvestmentRangeSection() {
       component="section"
       sx={{
         bgcolor: TOKENS.bgDark,
-        py: { xs: 8, md: 10 },
+        py: { xs: 6, md: 6},
         borderRadius: { xs: 0, md: 5 },
         mt: { xs: 6, md: 8 },
       }}
