@@ -25,9 +25,9 @@ const NAV_ITEMS = [
   { label: "Home",      href: "/",           icon: <HomeRounded fontSize="small" /> },
   { label: "Franchise", href: "/franchise",  icon: <StorefrontRounded fontSize="small" /> },
   { label: "Investors", href: "/investors",  icon: <Groups2Rounded fontSize="small" /> },
-  { label: "Services",  href: "/services",   icon: <HandymanRounded fontSize="small" /> },
-  { label: "News",      href: "/news",       icon: <NewspaperRounded fontSize="small" /> },
-  { label: "About",     href: "/about",      icon: <InfoRounded fontSize="small" /> },
+  { label: "Services",  href: "/",   icon: <HandymanRounded fontSize="small" /> },
+  { label: "News",      href: "/",       icon: <NewspaperRounded fontSize="small" /> },
+  { label: "About",     href: "/",      icon: <InfoRounded fontSize="small" /> },
 ];
 
 function NavItem({ href, icon, label, active }) {
