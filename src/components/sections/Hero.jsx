@@ -154,7 +154,7 @@ export default function Hero() {
             </Typography>
 
         {/* Scroll to top */}
-        <Box
+        {/* <Box
           sx={{
             position: "absolute",
             right: 20,
@@ -177,7 +177,7 @@ export default function Hero() {
           >
             <KeyboardArrowUpRounded />
           </Button>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );
