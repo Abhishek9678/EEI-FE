@@ -103,7 +103,7 @@ function BulletRow({ children }) {
 
 export default function InvestmentReturns() {
   return (
-    <Box component="section" sx={{ bgcolor: TOKENS.bg, py: { xs: 8, md: 12 } }}>
+    <Box component="section" sx={{ bgcolor: TOKENS.bg, py: { xs: 6, md: 6 } }}>
       <Container maxWidth="lg">
         {/* Heading */}
         <Typography

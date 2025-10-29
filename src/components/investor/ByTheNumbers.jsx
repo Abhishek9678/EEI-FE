@@ -1,35 +1,25 @@
 "use client";
 import * as React from "react";
 import Image from "next/image";
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Stack,
-  Button,
-} from "@mui/material";
-import LocalShippingRounded from "@mui/icons-material/LocalShippingRounded";
-import PlaceRounded from "@mui/icons-material/PlaceRounded";
-import AccessTimeRounded from "@mui/icons-material/AccessTimeRounded";
-import TrendingUpRounded from "@mui/icons-material/TrendingUpRounded";
+import { Box, Container, Grid, Typography, Stack, Button } from "@mui/material";
 import NorthEastRounded from "@mui/icons-material/NorthEastRounded";
 
 const TOKENS = {
-  // background band (deep blue/green gradient)
+  // band
   bandStart: "#0E1B2A",
   bandEnd: "#0A1220",
-  cardBg: "rgba(13, 28, 43, 0.72)",
-  cardBorder: "rgba(86, 212, 155, 0.35)", // teal-lime glow
-  cardInner: "rgba(0,0,0,0.20)",
-  heading: "#EAF7F2",
-  sub: "rgba(226, 241, 236, 0.75)",
-  lime: "#B4F28A",
-  limeSoft: "#8CE36A",
+  // cards
+  cardBg: "rgba(15, 30, 48, 0.72)",
+  cardBorder: "rgba(120, 214, 151, 0.35)",
   iconTile: "rgba(120, 214, 151, 0.18)",
+  // text
+  heading: "#EAF7F2",
+  sub: "rgba(226, 241, 236, 0.78)",
+  lime: "#B4F28A",
+  label: "#E7FFE9",
 };
 
-function IconTile({ iconSrc, fallback }) {
+function IconTile({ src }) {
   return (
     <Box
       sx={{
@@ -39,43 +29,37 @@ function IconTile({ iconSrc, fallback }) {
         bgcolor: TOKENS.iconTile,
         display: "grid",
         placeItems: "center",
-        border: "1px solid rgba(131, 243, 171, 0.25)",
-        boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.2)",
+        border: "1px solid rgba(131,243,171,0.25)",
+        boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.18)",
       }}
     >
-      {iconSrc ? (
-        <Image
-          src={iconSrc}
-          alt=""
-          width={28}
-          height={28}
-          style={{ display: "block", objectFit: "contain" }}
-        />
-      ) : (
-        fallback
-      )}
+      <Image
+        src={src}
+        alt=""
+        width={28}
+        height={28}
+        style={{ display: "block", objectFit: "contain" }}
+      />
     </Box>
   );
 }
 
-function StatCard({ iconSrc, fallbackIcon, number, label, caption }) {
+function StatCard({ iconSrc, number, label, caption }) {
   return (
     <Box
       sx={{
-        position: "relative",
         height: "100%",
         borderRadius: 3,
         p: { xs: 3, md: 3.5 },
         bgcolor: TOKENS.cardBg,
-        // subtle neon border + inner shadow like Figma
         border: `1px solid ${TOKENS.cardBorder}`,
         boxShadow:
-          "0 0 0 1px rgba(0,0,0,0.4) inset, 0 10px 28px rgba(2, 14, 26, 0.6)",
+          "0 0 0 1px rgba(0,0,0,0.45) inset, 0 12px 30px rgba(2,14,26,0.6)",
         backdropFilter: "blur(2px)",
       }}
     >
       <Stack spacing={2}>
-        <IconTile iconSrc={iconSrc} fallback={fallbackIcon} />
+        <IconTile src={iconSrc} />
 
         <Typography
           sx={{
@@ -90,23 +74,11 @@ function StatCard({ iconSrc, fallbackIcon, number, label, caption }) {
         </Typography>
 
         <Box>
-          <Typography
-            sx={{
-              fontWeight: 800,
-              fontSize: 18,
-              color: "#E7FFE9",
-            }}
-          >
+          <Typography sx={{ fontWeight: 800, fontSize: 18, color: TOKENS.label }}>
             {label}
           </Typography>
           {caption ? (
-            <Typography
-              sx={{
-                mt: 0.5,
-                fontSize: 14,
-                color: TOKENS.sub,
-              }}
-            >
+            <Typography sx={{ mt: 0.5, fontSize: 14, color: TOKENS.sub }}>
               {caption}
             </Typography>
           ) : null}
@@ -126,7 +98,7 @@ export default function ByTheNumbers() {
       }}
     >
       <Container maxWidth="lg">
-        {/* Heading + sub */}
+        {/* Heading */}
         <Typography
           component="h2"
           sx={{
@@ -151,42 +123,41 @@ export default function ByTheNumbers() {
           Proven performance and scale across India’s leading EV logistics network
         </Typography>
 
-        {/* Cards */}
+        {/* Stats */}
         <Grid container spacing={{ xs: 2.5, md: 3.5 }}>
           <Grid item xs={12} md={3}>
             <StatCard
-              // pass iconSrc="/your-truck.png" if you have PNGs; otherwise fallback icon will show
-              number="320+"
-              label="EVs Deployed"
-              caption="Across 15+ cities"
-              fallbackIcon={<LocalShippingRounded sx={{ color: TOKENS.limeSoft }} />}
+              iconSrc="/icons/rupee-box.png"      // replace with your PNG
+              number="₹50Cr+"
+              label="Asset Base"
+              caption="Growing portfolio"
             />
           </Grid>
 
           <Grid item xs={12} md={3}>
             <StatCard
-              number="26M+"
-              label="Km Delivered Monthly"
-              caption="Green miles covered"
-              fallbackIcon={<PlaceRounded sx={{ color: TOKENS.limeSoft }} />}
+              iconSrc="/icons/pin-box.png"
+              number="10+"
+              label="City Operations"
+              caption="Pan-India presence"
             />
           </Grid>
 
           <Grid item xs={12} md={3}>
             <StatCard
-              number="25%"
-              label="On-Time Fulfillment"
-              caption="Industry-leading SLA"
-              fallbackIcon={<AccessTimeRounded sx={{ color: TOKENS.limeSoft }} />}
+              iconSrc="/icons/clock-box.png"
+              number="95%"
+              label="Uptime Efficiency"
+              caption="Reliable operations"
             />
           </Grid>
 
           <Grid item xs={12} md={3}>
             <StatCard
-              number="2%"
-              label="Annual Revenue Uplift"
-              caption="For franchise partners"
-              fallbackIcon={<TrendingUpRounded sx={{ color: TOKENS.limeSoft }} />}
+              iconSrc="/icons/arrow-up-box.png"
+              number="1,200+"
+              label="Fleet Deployed"
+              caption="Active vehicles"
             />
           </Grid>
         </Grid>
@@ -198,19 +169,17 @@ export default function ByTheNumbers() {
             endIcon={<NorthEastRounded />}
             sx={{
               px: 3,
-              py: 1.25,
+              py: 1.2,
               borderRadius: 2,
               fontWeight: 800,
               bgcolor: "rgba(255,255,255,0.12)",
-              color: "#EAF7F2",
+              color: TOKENS.heading,
               backdropFilter: "blur(2px)",
               border: "1px solid rgba(255,255,255,0.18)",
-              "&:hover": {
-                bgcolor: "rgba(255,255,255,0.18)",
-              },
+              "&:hover": { bgcolor: "rgba(255,255,255,0.18)" },
             }}
           >
-            See Full Performance Deck
+            Apply to Invest
           </Button>
         </Box>
       </Container>

@@ -91,7 +91,7 @@ function ProvideCard({ icon, title, description }) {
 
 export default function WhatEEIProvides() {
   return (
-    <Box component="section" sx={{ bgcolor: TOKENS.bg, py: { xs: 8, md: 12 } }}>
+    <Box component="section" sx={{ bgcolor: TOKENS.bg, py: { xs: 6, md: 6 } }}>
       <Container maxWidth="lg">
         {/* Section Header */}
         <Typography
