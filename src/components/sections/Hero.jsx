@@ -3,6 +3,7 @@ import * as React from "react";
 import { Box, Container, Typography, Button, Stack } from "@mui/material";
 import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
 import KeyboardArrowUpRounded from "@mui/icons-material/KeyboardArrowUpRounded";
+import { NorthEastRounded } from "@mui/icons-material";
 
 const TOKENS = {
   lime: "#CAE28E",
@@ -122,7 +123,7 @@ export default function Hero() {
             infrastructure sharing for Indian businesses.
           </Typography>
 
-          <Button
+          {/* <Button
             size="large"
             variant="contained"
             color="primary"
@@ -139,7 +140,40 @@ export default function Hero() {
             }}
           >
             Get A Free Demo
-          </Button>
+          </Button> */}
+
+            <Button
+                          variant="contained"
+                          endIcon={
+                            <Box
+                              sx={{
+                                bgcolor: "#0B0B0B",
+                                color: "#fff",
+                                width: 28,
+                                height: 28,
+                                borderRadius: "50%",
+                                display: "grid",
+                                placeItems: "center",
+                                ml: 0.5,
+                              }}
+                            >
+                              <NorthEastRounded fontSize="small" />
+                            </Box>
+                          }
+                          sx={{
+                            bgcolor: TOKENS.lime,
+                            color: "#0B0B0B",
+                            fontWeight: 700,
+                            borderRadius: 999,
+                            px: 3,
+                            py: 1.4,
+                            mt:4,
+                            fontSize: 16,
+                            "&:hover": { bgcolor: TOKENS.limeHover },
+                          }}
+                        >
+                          Get A Free Demo
+                        </Button>
         </Box>
 
          <Typography
@@ -147,8 +181,9 @@ export default function Hero() {
               sx={{position: "absolute",
             // right: '26%',
             // pr:{ sm: 0, lg: 18 },
+            fontWeight:800,
             width:'100%',
-            bottom: 24, opacity: 0.85, mt: { xs: 6, md: 9 }, textAlign:'center' }}
+            bottom: 24, opacity: 1, mt: { xs: 6, md: 9 }, textAlign:'center' }}
             >
               Trusted by logistics partners, delivery leaders and B2B brands across India.
             </Typography>
