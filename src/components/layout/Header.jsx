@@ -30,6 +30,7 @@ const NAV_ITEMS = [
   { label: "About",     href: "/",      icon: <InfoRounded fontSize="small" /> },
 ];
 
+
 function NavItem({ href, icon, label, active }) {
   return (
     <Stack
@@ -71,6 +72,13 @@ export default function Header() {
 
   const buttonText = labels[pathname] || "Get A Free Demo";
 
+  const isActive = (label) => {
+  if (pathname === "/franchise") return label === "Franchise";
+  if (pathname === "/investors") return label === "Investors";
+  // For "/", or when users click Services/News/About (which also go "/"):
+  return label === "Home";
+};
+
   return (
     <AppBar
       elevation={0}
@@ -98,7 +106,7 @@ export default function Header() {
                     href={item.href}
                     icon={item.icon}
                     label={item.label}
-                    active={pathname === item.href}
+                    active={isActive(item.label)}
                   />
                 ))}
               </Stack>
