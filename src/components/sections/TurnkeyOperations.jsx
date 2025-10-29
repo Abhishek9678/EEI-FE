@@ -30,7 +30,7 @@ const ITEMS = [
     key: "dispatch",
     title: "Smart dispatch, live GPS tracking & route optimization",
     icon: "/dispatchblk.png",
-    image: "/home.png",
+    image: "/img.jpeg",
   },
   {
     key: "onboarding",
@@ -42,7 +42,7 @@ const ITEMS = [
     key: "analytics",
     title: "Real-time performance analytics & reporting dashboard",
     icon: "/analytics.png",
-    image: "/home.png",
+    image: "/img.jpeg",
   },
   {
     key: "subscriptions",
