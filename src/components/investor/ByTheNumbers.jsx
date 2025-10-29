@@ -3,6 +3,7 @@ import * as React from "react";
 import Image from "next/image";
 import { Box, Container, Grid, Typography, Stack, Button } from "@mui/material";
 import NorthEastRounded from "@mui/icons-material/NorthEastRounded";
+import { LocalShippingRounded } from "@mui/icons-material";
 
 const TOKENS = {
   // band
@@ -19,7 +20,7 @@ const TOKENS = {
   label: "#E7FFE9",
 };
 
-function IconTile({ src }) {
+function IconTile({ iconSrc, fallback }) {
   return (
     <Box
       sx={{
@@ -33,18 +34,22 @@ function IconTile({ src }) {
         boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.18)",
       }}
     >
-      <Image
-        src={src}
-        alt=""
-        width={28}
-        height={28}
-        style={{ display: "block", objectFit: "contain" }}
-      />
+      {iconSrc ? (
+              <Image
+                src={iconSrc}
+                alt=""
+                width={28}
+                height={28}
+                style={{ display: "block", objectFit: "contain" }}
+              />
+            ) : (
+              fallback
+            )}
     </Box>
   );
 }
 
-function StatCard({ iconSrc, number, label, caption }) {
+function StatCard({ iconSrc, fallbackIcon, number, label, caption }) {
   return (
     <Box
       sx={{
@@ -59,7 +64,7 @@ function StatCard({ iconSrc, number, label, caption }) {
       }}
     >
       <Stack spacing={2}>
-        <IconTile src={iconSrc} />
+        <IconTile src={iconSrc}  fallback={fallbackIcon}/>
 
         <Typography
           sx={{
@@ -127,37 +132,41 @@ export default function ByTheNumbers() {
         <Grid container spacing={{ xs: 2.5, md: 3.5 }}>
           <Grid item xs={12} md={3}>
             <StatCard
-              iconSrc="/icons/rupee-box.png"      // replace with your PNG
+            //   iconSrc="/icons/rupee-box.png"      // replace with your PNG
               number="₹50Cr+"
               label="Asset Base"
               caption="Growing portfolio"
+               fallbackIcon={<LocalShippingRounded sx={{ color: TOKENS.limeSoft }} />}
             />
           </Grid>
 
           <Grid item xs={12} md={3}>
             <StatCard
-              iconSrc="/icons/pin-box.png"
+            //   iconSrc="/icons/pin-box.png"
               number="10+"
               label="City Operations"
               caption="Pan-India presence"
+              fallbackIcon={<LocalShippingRounded sx={{ color: TOKENS.limeSoft }} />}
             />
           </Grid>
 
           <Grid item xs={12} md={3}>
             <StatCard
-              iconSrc="/icons/clock-box.png"
+            //   iconSrc="/icons/clock-box.png"
               number="95%"
               label="Uptime Efficiency"
               caption="Reliable operations"
+              fallbackIcon={<LocalShippingRounded sx={{ color: TOKENS.limeSoft }} />}
             />
           </Grid>
 
           <Grid item xs={12} md={3}>
             <StatCard
-              iconSrc="/icons/arrow-up-box.png"
+            //   iconSrc="/icons/arrow-up-box.png"
               number="1,200+"
               label="Fleet Deployed"
               caption="Active vehicles"
+              fallbackIcon={<LocalShippingRounded sx={{ color: TOKENS.limeSoft }} />}
             />
           </Grid>
         </Grid>
