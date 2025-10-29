@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
+import { usePathname } from "next/navigation";
 
 const COLORS = { border: "rgba(255,255,255,0.14)", lime: "#CAE28E", limeHover: "#B8E454" };
 
@@ -33,11 +34,13 @@ function NavLink({ href, children }) {
 export default function Header() {
   const [open, setOpen] = React.useState(false);
   const isMdUp = useMediaQuery("(min-width:900px)");
+  const pathname = usePathname();
+
 
   return (
     <AppBar
       elevation={0}
-      position="fixed"
+      position="absolute"
       sx={{
         background: "transparent",  // truly transparent
         boxShadow: "none",
@@ -89,8 +92,8 @@ export default function Header() {
                   fontWeight: 800,
                   borderRadius: 40,
                 }}
-              >
-                Get A Free Demo
+              >{pathname == "/franchise"?"Apply Now":"Get A Free Demo"}
+               
               </Button>
             </Stack>
           ) : (
@@ -109,6 +112,7 @@ export default function Header() {
                     Menu
                   </Typography>
                   <Divider />
+                  <Box>
                   <List>
                     {["Home", "Franchise", "Investors", "Services", "News", "About"].map((t) => (
                       <ListItem key={t} disablePadding>
@@ -122,6 +126,7 @@ export default function Header() {
                       </ListItem>
                     ))}
                   </List>
+                  </Box>
                   <Button
                     fullWidth
                     size="large"
