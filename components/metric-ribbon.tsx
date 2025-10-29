@@ -35,8 +35,8 @@ export function MetricRibbon() {
             return (
               <li key={m.label} className="flex items-center gap-2">
                 <span className="inline-block h-2 w-2 rounded-full bg-green-600" aria-hidden="true" />
-                <span className="text-sm text-gray-600">{m.label}:</span>
-                <strong className="tabular-nums text-sm text-gray-900">{count.toLocaleString()}</strong>
+                <span className="text-sm text-gray-600">{m.label}: </span>
+                <strong className="tabular-nums text-sm text-gray-900"> {count.toLocaleString()} </strong>
               </li>
             )
           })}
