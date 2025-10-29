@@ -10,6 +10,7 @@ import {
   Divider,
 } from "@mui/material";
 import StarRounded from "@mui/icons-material/StarRounded";
+import { usePathname } from "next/navigation";
 
 const TOKENS = {
   bg: "#F5FBF2",
@@ -38,9 +39,9 @@ function QuoteBadge() {
       sx={{
         position: "absolute",
         top: -20,
-        left: 28,
-        width: 56,
-        height: 56,
+        left: -10,
+        width: 45,
+        height: 45,
         borderRadius: "50%",
         bgcolor: TOKENS.limeBadge,
         display: "grid",
@@ -52,8 +53,8 @@ function QuoteBadge() {
           <Image
                src="SVG.png"
                alt=""
-               width={28}
-               height={28}
+               width={20}
+               height={20}
                style={{ display: "block", objectFit: "contain" }}
              />
     </Box>
@@ -116,6 +117,7 @@ function TestimonialCard({ quote, name, title, location, avatarSrc }) {
 }
 
 function StatsStrip() {
+   const pathname = usePathname();
   const stats = [
     { value: "4.8/5", label: "Partner Satisfaction" },
     { value: "250+", label: "Active Franchises" },
@@ -123,6 +125,8 @@ function StatsStrip() {
   ];
 
   return (
+    <>
+    {pathname === "/franchise" && (
     <Box sx={{ mt: { xs: 4, md: 6 } }}>
       <Box
         sx={{
@@ -159,10 +163,19 @@ function StatsStrip() {
         </Grid>
       </Box>
     </Box>
+        )}
+        </>
   );
 }
 
 export default function TestimonialsSection() {
+   const pathname = usePathname();
+    const labels = {
+      "/franchise": "What Partners & Riders Say",
+      "/investors": "What Our Partners Say",
+    };
+  const headingText = labels[pathname];
+
   return (
     <Box component="section" sx={{ bgcolor: TOKENS.bg, py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
@@ -173,12 +186,17 @@ export default function TestimonialsSection() {
             textAlign: "center",
             fontWeight: 900,
             fontSize: { xs: 30, md: 40 },
+            ...(pathname === "/investors" && {
+            // mt: 1,
+            mb: { xs: 4, md: 6 },
+          }),
             color: TOKENS.textMain,
             lineHeight: 1.15,
           }}
         >
-          What Partners & Riders Say
+          {headingText}
         </Typography>
+        {pathname === "/franchise" && (
         <Typography
           sx={{
             textAlign: "center",
@@ -190,6 +208,7 @@ export default function TestimonialsSection() {
         >
           Real experiences from our franchise partners, riders, and clients
         </Typography>
+        )}
 
         {/* Testimonial Cards */}
         <Grid container spacing={{ xs: 2.5, md: 4 }}>

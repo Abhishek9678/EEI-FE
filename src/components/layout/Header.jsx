@@ -64,6 +64,12 @@ export default function Header() {
   const [open, setOpen] = React.useState(false);
   const isMdUp = useMediaQuery("(min-width:900px)");
   const pathname = usePathname();
+  const labels = {
+    "/franchise": "Apply Now",
+    "/investors": "Invest With Us",
+  };
+
+  const buttonText = labels[pathname] || "Get A Free Demo";
 
   return (
     <AppBar
@@ -124,7 +130,7 @@ export default function Header() {
                   "&:hover": { bgcolor: TOKENS.limeHover },
                 }}
               >
-                Get A Free Demo
+                {buttonText}
               </Button>
             </>
           ) : (
@@ -196,7 +202,7 @@ export default function Header() {
                       "&:hover": { bgcolor: TOKENS.limeHover },
                     }}
                   >
-                    Get A Free Demo
+                   {buttonText}
                   </Button>
                 </Box>
               </Drawer>

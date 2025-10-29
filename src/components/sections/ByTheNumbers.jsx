@@ -214,7 +214,8 @@ export default function ByTheNumbers() {
             <Box textAlign="left">
               <Typography fontWeight={600} color="#000">Contact Us</Typography>
               <Typography variant="body2" color="#000">
-                Lorem ipsum dolor
+                {/* Lorem ipsum dolor */}
+                1234567890
               </Typography>
             </Box>
           </Stack>

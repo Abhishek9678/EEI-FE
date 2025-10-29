@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
             fontWeight: 500,
           }}
         >
-          ✳ Lorem Ipsum ✳
+          ✳ Partners ✳
         </Typography>
 
         {/* Section Title */}

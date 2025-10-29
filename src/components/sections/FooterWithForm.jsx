@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box, Container, Grid, Stack, Typography, IconButton } from '@mui/material';
+import { Box, Container, Grid, Stack, Typography, IconButton, Divider } from '@mui/material';
 import ContactFormCard from './ContactFormCard';
 import FooterRightPanel from './FooterRightPanel';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
@@ -15,7 +15,10 @@ export default function FooterWithForm() {
   };
 
   return (
-    <Box sx={{ bgcolor: '#141815', py: { xs: 4, md: 6 },mt:{ md: 0, lg: 15 } }}>
+    <Box sx={{ backgroundImage: "url('/footerbg.png')", // ✅ Corrected syntax
+    backgroundSize: 'cover',                 // ✅ Makes image cover full box
+    backgroundRepeat: 'no-repeat',           // ✅ Prevents tiling
+    backgroundPosition: 'center',   py: { xs: 4, md: 6 },mt:{ md: 0, lg: 15 } }}>
       <Container maxWidth="lg">
         <Grid
           container
@@ -36,7 +39,7 @@ export default function FooterWithForm() {
             </Box>
           </Grid>
         </Grid>
-
+<Divider />
         {/* Bottom bar: reduced gap & pinned visually to bottom of section */}
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
@@ -50,7 +53,7 @@ export default function FooterWithForm() {
 
           <Stack direction="row" spacing={1.2} alignItems="center">
             {[FacebookRoundedIcon, Twitter, Instagram, YouTube].map((Icon, i) => (
-              <IconButton key={i} size="small" sx={{ bgcolor: 'rgba(255,255,255,0.12)', color: '#fff', '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' } }}>
+              <IconButton key={i} size="small" sx={{ bgcolor: '#fff', color: '#000', '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' } }}>
                 <Icon fontSize="small" />
               </IconButton>
             ))}
