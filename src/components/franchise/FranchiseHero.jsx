@@ -99,7 +99,8 @@ export default function FranchiseHero() {
     left: 0,
     textAlign: "center",
     display:"flex",
-    mt:2
+    mt:2,
+    ml:5
   }}
         >
           <Typography
