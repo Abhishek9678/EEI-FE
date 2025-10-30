@@ -4,15 +4,21 @@ import { Box, Typography, Grid, useTheme, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 
 const partners = [
-  { name: "mihoku", src: "/mihoku.png" },
-  { name: "Rockorn", src: "/rock.png" },
-  { name: "HANOKI", src: "/hanoki.png" },
-  { name: "Purolator", src: "/puro.png" },
-  { name: "Glovo", src: "/glovo.png" },
-  { name: "aramex", src: "/aramex.png" },
-  { name: "dpd", src: "/dpd.png" },
-  { name: "ENERGY", src: "/energy.png" },
-  { name: "POWER", src: "/power.png" },
+  { name: "mihoku", src: "/1.svg" },
+  { name: "Rockorn", src: "/2.svg" },
+  { name: "HANOKI", src: "/3.svg" },
+  { name: "Purolator", src: "/4.svg" },
+  { name: "Glovo", src: "/5.svg" },
+  { name: "aramex", src: "/6.svg" },
+  { name: "dpd", src: "/7.svg" },
+  { name: "ENERGY", src: "/8.svg" },
+  { name: "POWER", src: "/9.svg" },
+  // { name: "Purolator", src: "/10.svg" },
+  { name: "Glovo", src: "/11.svg" },
+  { name: "aramex", src: "/12.svg" },
+  { name: "dpd", src: "/13.svg" },
+  { name: "ENERGY", src: "/14.svg" },
+  { name: "POWER", src: "/15.svg" },
 ];
 
 export default function PartnersSection() {
@@ -59,7 +65,7 @@ export default function PartnersSection() {
       {/* Logo Grid */}
       <Grid
         container
-        spacing={{ xs: 3, sm: 4, md: 6 }}
+        // spacing={{ xs: 3, sm: 4, md: 6 }}
         justifyContent="center"
         alignItems="center"
       >
@@ -87,8 +93,8 @@ export default function PartnersSection() {
             <Box
               sx={{
                 position: "relative",
-                width: 120,
-                height: 60,
+                width: 240,
+                height: 120,
                 "@media (max-width:600px)": { width: 80, height: 40 },
               }}
             >

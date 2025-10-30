@@ -17,9 +17,9 @@ export default function FooterRightPanel({ sections = defaultSections, brand = d
       {/* Contact quick row */}
       <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: { xs: 2, md: 3 } }}>
         {[
-          { icon: <ChatBubbleOutlineRoundedIcon />, title: 'Talk To Us', detail: '(+000) 12345 6789' },
-          { icon: <HelpOutlineRoundedIcon />, title: 'Help Centre', detail: 'support@example.com' },
-          { icon: <MailOutlineRoundedIcon />, title: 'Write To Us', detail: 'info@example.com' },
+          { icon: <ChatBubbleOutlineRoundedIcon />, title: 'Talk To Us', detail: '(+91) 86302 24142' },
+          // { icon: <HelpOutlineRoundedIcon />, title: 'Help Centre', detail: 'support@example.com' },
+          { icon: <MailOutlineRoundedIcon />, title: 'Write To Us', detail: 'info@eeiservices.in' },
         ].map((item, i) => (
           <Grid key={i} item xs={12} sm={4}>
             <Stack direction="row" spacing={1.5} alignItems="center">
@@ -69,7 +69,7 @@ export default function FooterRightPanel({ sections = defaultSections, brand = d
   );
 }
 
-const defaultBrand = { tagline: 'Go Solar. Save Money. Save The Planet' };
+const defaultBrand = { tagline: 'Scale Fast, Operate Smart.' };
 const defaultSections = [
   { heading: 'Information', links: [{ label: 'Our Locations' }, { label: 'Affiliate Program' }, { label: 'Calculator' }, { label: 'Global Operations' }, { label: 'Chat Support' }] },
   { heading: 'Support', links: [{ label: 'Solutions' }, { label: 'What We Do' }, { label: 'Request a Freight' }, { label: 'Track & Trace' }, { label: 'Brokerage Terms' }] },
