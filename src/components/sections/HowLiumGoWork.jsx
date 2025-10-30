@@ -71,7 +71,7 @@ export default function HowLiumGoWorks() {
             mb: 1,
           }}
         >
-          — * Turnkey EV Operations — Ready To Deploy * —
+         Turnkey EV Operations — Ready To Deploy
         </Typography>
 
         <Grid

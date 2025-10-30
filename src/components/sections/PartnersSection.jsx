@@ -36,7 +36,7 @@ export default function PartnersSection() {
           fontWeight: 500,
           mb: 1,
           "&::before, &::after": {
-            content: '"—— ✶ ——"',
+            content: '""',
             mx: 1,
             color: "#000",
           },

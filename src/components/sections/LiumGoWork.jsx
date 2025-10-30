@@ -44,22 +44,6 @@ export default function LiumGoWork() {
         py: { xs: 7, md: 10 },
       }}
     >
-      {/* Eyebrow */}
-      <Box sx={{ color: TOKENS.textMuted, mb: { xs: 3, md: 4 }, px: { xs: 2, md: 8 } }}>
-        <Typography
-          component="span"
-          sx={{
-            fontSize: 12,
-            letterSpacing: 0.6,
-            fontWeight: 600,
-            textAlign: "left",
-            whiteSpace: "nowrap",
-          }}
-        >
-          — * One Platform. Every Electric Need. * —
-        </Typography>
-      </Box>
-
       {/* Headline */}
       <Box sx={{ px: { xs: 2, md: 8 } }}>
         <Typography
@@ -78,9 +62,9 @@ export default function LiumGoWork() {
             LIUM GO
           </Box>{" "}
           from EEI Services connects{" "}
-          <IconPill src="/Home1-textwithimg-1.png" alt="vehicles icon" size={70} />
+          {/* <IconPill src="/Home1-textwithimg-1.png" alt="vehicles icon" size={70} /> */}
           vehicles, manpower and charging{" "}
-          <IconPill src="/Home1-textwithimg-2.png" alt="charging icon" size={70} />
+          {/* <IconPill src="/Home1-textwithimg-2.png" alt="charging icon" size={70} /> */}
           so you can run profitable operations. Scale fast, operate smart.
         </Typography>
       </Box>

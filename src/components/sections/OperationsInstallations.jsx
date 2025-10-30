@@ -26,7 +26,7 @@ export default function OperationsInstallations() {
           fontWeight: 500,
           mb: 1,
           "&::before, &::after": {
-            content: '"—— ✶ ——"',
+            content: '""',
             mx: 1,
             color: "#000",
           },
