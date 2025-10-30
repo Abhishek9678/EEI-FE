@@ -25,10 +25,11 @@ const NAV_ITEMS = [
   { label: "Home",      href: "/",           icon: <HomeRounded fontSize="small" /> },
   { label: "Franchise", href: "/franchise",  icon: <StorefrontRounded fontSize="small" /> },
   { label: "Investors", href: "/investors",  icon: <Groups2Rounded fontSize="small" /> },
-  { label: "Services",  href: "/services",   icon: <HandymanRounded fontSize="small" /> },
-  { label: "News",      href: "/news",       icon: <NewspaperRounded fontSize="small" /> },
-  { label: "About",     href: "/about",      icon: <InfoRounded fontSize="small" /> },
+  { label: "Services",  href: "/",   icon: <HandymanRounded fontSize="small" /> },
+  { label: "News",      href: "/",       icon: <NewspaperRounded fontSize="small" /> },
+  { label: "About",     href: "/",      icon: <InfoRounded fontSize="small" /> },
 ];
+
 
 function NavItem({ href, icon, label, active }) {
   return (
@@ -71,6 +72,13 @@ export default function Header() {
 
   const buttonText = labels[pathname] || "Get A Free Demo";
 
+  const isActive = (label) => {
+  if (pathname === "/franchise") return label === "Franchise";
+  if (pathname === "/investors") return label === "Investors";
+  // For "/", or when users click Services/News/About (which also go "/"):
+  return label === "Home";
+};
+
   return (
     <AppBar
       elevation={0}
@@ -98,7 +106,7 @@ export default function Header() {
                     href={item.href}
                     icon={item.icon}
                     label={item.label}
-                    active={pathname === item.href}
+                    active={isActive(item.label)}
                   />
                 ))}
               </Stack>

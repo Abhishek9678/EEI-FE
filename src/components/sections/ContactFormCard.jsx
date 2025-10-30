@@ -40,7 +40,7 @@ export default function ContactFormCard({ onSubmit }) {
       }}
     >
       <Typography variant="caption" sx={{ color: '#000', display: 'block', mb: 0.5 }}>
-        —• Contact Us •—
+        Contact Us
       </Typography>
 
       <Typography component="h3" sx={{ fontWeight: 800, fontSize: { xs: '1.55rem', sm: '1.8rem' }, color: '#151515', mb: 1.5 }}>

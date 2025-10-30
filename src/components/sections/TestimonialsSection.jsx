@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
             fontWeight: 500,
           }}
         >
-          ✳ Partners ✳
+        Partners
         </Typography>
 
         {/* Section Title */}

@@ -80,9 +80,9 @@ export default function TurnkeyOperations() {
                   mb: 2.5,
                 }}
               >
-                <Box component="span" sx={{ flex: "0 0 24px", borderTop: `1px solid ${UI.divider}` }} />
+                <Box component="span" sx={{ flex: "0 0 0", borderTop: `1px solid ${UI.divider}` }} />
                 Ready To Deploy
-                <Box component="span" sx={{ flex: 1, borderTop: `1px solid ${UI.divider}` }} />
+                <Box component="span" sx={{ flex: "0 0 0", borderTop: `1px solid ${UI.divider}` }} />
               </Typography>
 
               <Typography
